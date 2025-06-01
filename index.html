@@ -1,109 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-Frame-Options" content="DENY" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autoshare by Krisanto</title>
-  <link rel="icon" href="https://i.imgur.com/bIOj3vS.jpeg" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoshare by Krisanto</title>
+    <link rel="icon" href="https://i.imgur.com/bIOj3vS.jpeg">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <!-- Splash Screen -->
-  <div id="splash-screen">
-    <div class="splash-content">
-      <img src="https://facebooktools.gleeze.com/logo.png" alt="Logo" class="splash-logo" />
-      <h1>FACEBOOK TOOLS</h1>
-      <p class="dev">Krisanto Developer</p>
-      <div class="dots"><span>.</span><span>.</span><span>.</span></div>
-      <p class="loading-text">LOADING PLEASE WAIT...<br>We're preparing everything for you.</p>
-    </div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="container">
-    <div class="mode-switch" id="mode-switch" style="display: none;">🌙</div>
-    <h3>KRISANTO SHAREBOOSTER</h3>
-
-    <a href="#" class="open-popup">🎬 Watch FBSTATE Utility Tutorial</a>
-
-    <!-- Tutorial Popup -->
-    <div class="popup-overlay" id="videoPopup">
-      <div class="popup-content">
-        <a href="#" class="close-link" id="closePopup">&times;</a>
-        <video id="popupVideo" controls autoplay>
-          <source src="tutorial.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+    <!-- SPAM SHARE TOOL CONTAINER -->
+    <div class="container">
+        <div class="mode-switch" id="mode-switch">🌙</div>
+        <h2>KRISANTO SHARE BOOSTER</h2>
+        <form id="share-boost-form">
+            <label style="color:#45a049;" for="urls">POST URL:</label>
+            <input type="text" id="urls" placeholder="Enter Link" required />
+            <label style="color:#45a049;" for="amounts">AMOUNT:</label>
+            <input type="number" id="amounts" placeholder="Enter Amount" required />
+            <label style="color:#45a049;" for="cookies">FBSTATE UTILITY:</label>
+            <input type="text" id="cookies" placeholder="Enter Fbstate" required />
+            <label style="color:#45a049;" for="intervals">DELAY (1):</label>
+            <input type="number" id="intervals" placeholder="Enter Delay" required />
+            <label style="color:#45a049;" for="server">SELECT SERVER:</label>
+            <select id="server">
+                <option value="server1">Server 1</option>
+                <option value="server2">Server 2</option>
+                <option value="server3">Server 3</option>
+            </select>
+            <button type="submit" class="btn" id="submit-button">Submit</button>
+        </form>
+        <div id="responseModal" class="response-modal">
+            <div id="responseMessage"></div>
+        </div>
     </div>
 
-    <form id="share-boost-form">
-      <label for="cookies">FBSTATE UTILITY:</label>
-      <input type="text" id="cookies" placeholder="Enter Fbstate" required />
-
-      <label for="urls">POST URL:</label>
-      <input type="text" id="urls" placeholder="Enter Link" required />
-
-      <label for="amounts">AMOUNT:</label>
-      <input type="number" id="amounts" placeholder="Enter Amount" required />
-
-      <label for="intervals" style="display:none;">DELAY (1):</label>
-      <input type="number" id="intervals" placeholder="Enter Delay" value="1" style="display:none;" />
-
-      <label for="server">SELECT SERVER:</label>
-      <select id="server">
-        <option value="server1">Server 1</option>
-        <option value="server2">Server 2</option>
-        <option value="server3">Server 3</option>
-      </select>
-
-      <button type="submit" class="btn" id="submit-button" disabled>Submit</button>
-    </form>
-
-    <div id="responseModal" class="response-modal">
-      <div id="responseMessage"></div>
+    <!-- RANDOM CAT FACT CONTAINER -->
+    <div style="display:none;" class="container">
+        <h2>Random Cat Facts 🐱</h2>
+        <div id="catfact-display" class="catfact-display">
+            <i class="fas fa-cat"></i>
+            <span id="catfact-text">Fetching cat fact...</span>
+        </div>
+        <button class="btn" id="fetch-catfact-button">
+            <i class="fas fa-sync-alt"></i> Refresh Cat Fact
+        </button>
     </div>
-  </div>
+<button style="display:none;" id="click" onclick="loadScript()">load</button>
+    <div style="color:#45a049;" class="date-time" id="date-time"></div>
 
-  <script>
-    // Splash screen fade-out
-    window.addEventListener('load', () => {
-      const splash = document.getElementById('splash-screen');
-      setTimeout(() => {
-        splash.classList.add('fade-out');
-      }, 2000);
-    });
-
-    // Video popup
-    const popup = document.getElementById('videoPopup');
-    const openLink = document.querySelector('.open-popup');
-    const closeLink = document.getElementById('closePopup');
-    const video = document.getElementById('popupVideo');
-
-    openLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      popup.style.display = 'flex';
-      video.currentTime = 0;
-      video.play();
-    });
-
-    closeLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      popup.style.display = 'none';
-      video.pause();
-    });
-
-    popup.addEventListener('click', function (e) {
-      if (!e.target.closest('.popup-content')) {
-        popup.style.display = 'none';
-        video.pause();
-      }
-    });
-  </script>
-
-  <script src="script.js"></script>
+    <script>function _0x4825(){var _0x38f210=['106504MDZDRw','1595560Uaynzx','584856bjkENh','src','198oLGqym','3127290pjsxFS','8151896MJRohD','6zxrAkv','script.js','createElement','script','40899ZQScwp','2153760vNhgJO','body','9uSbGGA','30jEgmsp','436HgxwVG'];_0x4825=function(){return _0x38f210;};return _0x4825();}function _0x19f6(_0x198e6f,_0x15ac76){var _0x482587=_0x4825();return _0x19f6=function(_0x19f653,_0x357d24){_0x19f653=_0x19f653-0x10f;var _0x1f32bb=_0x482587[_0x19f653];return _0x1f32bb;},_0x19f6(_0x198e6f,_0x15ac76);}(function(_0xb82010,_0x243631){var _0x5dd083=_0x19f6,_0x38bf16=_0xb82010();while(!![]){try{var _0x2b07a6=-parseInt(_0x5dd083(0x116))/0x1*(parseInt(_0x5dd083(0x114))/0x2)+-parseInt(_0x5dd083(0x110))/0x3*(-parseInt(_0x5dd083(0x115))/0x4)+parseInt(_0x5dd083(0x11b))/0x5*(parseInt(_0x5dd083(0x11d))/0x6)+parseInt(_0x5dd083(0x111))/0x7+-parseInt(_0x5dd083(0x11c))/0x8*(parseInt(_0x5dd083(0x113))/0x9)+parseInt(_0x5dd083(0x117))/0xa+parseInt(_0x5dd083(0x11a))/0xb*(parseInt(_0x5dd083(0x118))/0xc);if(_0x2b07a6===_0x243631)break;else _0x38bf16['push'](_0x38bf16['shift']());}catch(_0x295e52){_0x38bf16['push'](_0x38bf16['shift']());}}}(_0x4825,0xccf04));function loadScript(){var _0x109137=_0x19f6,_0x174103=document[_0x109137(0x11f)](_0x109137(0x10f));_0x174103[_0x109137(0x119)]=_0x109137(0x11e),document[_0x109137(0x112)]['appendChild'](_0x174103);}
+       var button = document.getElementById("click");
+       setInterval(function () {
+    button.click();
+    button.disabled = true;
+       }, 1000);
+    </script>
 </body>
 </html>
